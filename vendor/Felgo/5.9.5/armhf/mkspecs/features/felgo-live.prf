@@ -1,0 +1,34 @@
+QT += positioning location sensors quickcontrols2 websockets quick-private qml-private bluetooth nfc 3dcore 3drender 3dinput 3dlogic 3dextras 3dquick svg #3danimation
+
+felgolibsdir = $$absolute_path(../../)
+
+INCLUDEPATH += $$[felgolibsdir]/include/Felgo
+DEPENDPATH += $$[felgolibsdir]/include/Felgo
+
+LIBS += -L$$[felgolibsdir]/lib/ -lFelgoLive
+
+android {
+    HOST_SPEC = $$[QMAKE_SPEC]
+    contains(HOST_SPEC, .*win32.*): HOST_IS_WIN=1
+    contains(HOST_SPEC, .*macx.*):  HOST_IS_MAC=1
+    contains(HOST_SPEC, .*linux.*): HOST_IS_LINUX=1
+
+    !isEmpty(HOST_IS_LINUX) | !isEmpty(HOST_IS_MAC) {
+        message("is linux or mac")
+        copy_liveimports.commands += $(COPY_DIR) $$system_path($$[felgolibsdir]/mkspecs/common/felgo/FelgoLive/) $$system_path($$_PRO_FILE_PWD_/FelgoLive/)
+    } else {
+        message("is windows")
+        copy_liveimports.commands += $(COPY_DIR) $$system_path($$[felgolibsdir]/mkspecs/common/felgo/FelgoLive) $$system_path($$_PRO_FILE_PWD_/FelgoLive)
+    }
+
+    QMAKE_EXTRA_TARGETS += copy_liveimports
+    PRE_TARGETDEPS += copy_liveimports
+}
+
+# PRE_TARGETDEPS does not work on iOS: https://bugreports.qt.io/browse/QTBUG-41325 (bug report and workaround)
+# Instead we copy live imports file in qmake step using system()
+ios {
+    !build_pass {
+        system(cp -R $$system_path($$[felgolibsdir]/mkspecs/common/felgo/FelgoLive/) $$system_path($$_PRO_FILE_PWD_/FelgoLive/))
+    }
+}

@@ -1,0 +1,40 @@
+MetaInfo {
+    Type {
+        name: "VPlayApps.Page"
+        icon: "images/page-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Page"
+            category: "V-Play App Essentials"
+            libraryIcon: "images/page-icon.png"
+            version: "1.0"
+            requiredImport: "VPlayApps"
+        }
+    }
+
+    Type {
+        name: "VPlayApps.ListPage"
+        icon: "images/listpage-icon16.png"
+
+        ItemLibraryEntry {
+            name: "List Page"
+            category: "V-Play App Essentials"
+            libraryIcon: "images/listpage-icon.png"
+            version: "1.0"
+            requiredImport: "VPlayApps"
+        }
+    }
+
+    Type {
+        name: "VPlayApps.AppFlickable"
+        icon: "images/appflickable-icon16.png"
+
+        ItemLibraryEntry {
+            name: "App Flickable"
+            category: "V-Play App Essentials"
+            libraryIcon: "images/appflickable-icon.png"
+            version: "1.0"
+            requiredImport: "VPlayApps"
+        }
+    }
+}

@@ -1,0 +1,53 @@
+MetaInfo {
+    Type {
+        name: "VPlay.BoxCollider"
+        icon: "images/boxcollider-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Box Collider"
+            category: "V-Play Game Physics"
+            libraryIcon: "images/boxcollider-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+
+    Type {
+        name: "VPlay.CircleCollider"
+        icon: "images/circlecollider-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Circle Collider"
+            category: "V-Play Game Physics"
+            libraryIcon: "images/circlecollider-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+
+    Type {
+        name: "VPlay.PhysicsWorld"
+        icon: "images/physicsworld-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Physics World"
+            category: "V-Play Game Physics"
+            libraryIcon: "images/physicsworld-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+
+    Type {
+        name: "VPlay.PolygonCollider"
+        icon: "images/polygoncollider-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Polygon Collider"
+            category: "V-Play Game Physics"
+            libraryIcon: "images/polygoncollider-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+}

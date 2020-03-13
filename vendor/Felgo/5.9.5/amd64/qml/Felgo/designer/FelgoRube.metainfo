@@ -1,0 +1,40 @@
+MetaInfo {
+    Type {
+        name: "Felgo.RubeBody"
+        icon: "images/rubebody-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Rube Body"
+            category: "Felgo Rube Levels"
+            libraryIcon: "images/rubebody-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.RubeImage"
+        icon: "images/rubeimage-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Rube Image"
+            category: "Felgo Rube Levels"
+            libraryIcon: "images/rubeimage-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.RubeParser"
+        icon: "images/rubeparser-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Rube Parser"
+            category: "Felgo Rube Levels"
+            libraryIcon: "images/rubeparser-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+}

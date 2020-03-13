@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/FelgoLicense/">
+        <file alias="felgo_license.key">../../../../../Felgo/felgo_license.key</file>
+    </qresource>
+</RCC>

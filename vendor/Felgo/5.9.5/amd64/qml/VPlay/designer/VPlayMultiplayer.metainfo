@@ -1,0 +1,41 @@
+MetaInfo {
+
+    Type {
+        name: "VPlay.NotificationBar"
+        icon: "images/notificationbar-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Notification Bar"
+            category: "V-Play Multiplayer"
+            libraryIcon: "images/notificationbar-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+
+    Type {
+        name: "VPlay.VPlayMultiplayer"
+        icon: "images/vplaymultiplayer-icon16.png"
+
+        ItemLibraryEntry {
+            name: "VPlay Multiplayer"
+            category: "V-Play Multiplayer"
+            libraryIcon: "images/vplaymultiplayer-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+
+    Type {
+        name: "VPlay.VPlayMultiplayerView"
+        icon: "images/vplaymultiplayerview-icon16.png"
+
+        ItemLibraryEntry {
+            name: "VPlay Multiplayer View"
+            category: "V-Play Multiplayer"
+            libraryIcon: "images/vplaymultiplayerview-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+}

@@ -1,0 +1,27 @@
+MetaInfo {
+    Type {
+        name: "Felgo.Storage"
+        icon: "images/storage-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Storage"
+            category: "Felgo Utility"
+            libraryIcon: "images/storage-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.WebStorage"
+        icon: "images/webstorage-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Web Storage"
+            category: "Felgo Utility"
+            libraryIcon: "images/webstorage-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+}

@@ -1,0 +1,40 @@
+MetaInfo {
+    Type {
+        name: "VPlay.EntityBase"
+        icon: "images/entitybase-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Entity Base"
+            category: "V-Play Game Essentials"
+            libraryIcon: "images/entitybase-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+
+    Type {
+        name: "VPlay.Scene"
+        icon: "images/scene-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Scene"
+            category: "V-Play Game Essentials"
+            libraryIcon: "images/scene-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+
+    Type {
+        name: "VPlay.SyncedStore"
+        icon: "images/syncedstore-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Synced Store"
+            category: "V-Play Game Essentials"
+            libraryIcon: "images/syncedstore-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+}

@@ -1,0 +1,40 @@
+MetaInfo {
+    Type {
+        name: "VPlay.RubeBody"
+        icon: "images/rubebody-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Rube Body"
+            category: "V-Play Rube Levels"
+            libraryIcon: "images/rubebody-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+
+    Type {
+        name: "VPlay.RubeImage"
+        icon: "images/rubeimage-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Rube Image"
+            category: "V-Play Rube Levels"
+            libraryIcon: "images/rubeimage-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+
+    Type {
+        name: "VPlay.RubeParser"
+        icon: "images/rubeparser-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Rube Parser"
+            category: "V-Play Rube Levels"
+            libraryIcon: "images/rubeparser-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+}

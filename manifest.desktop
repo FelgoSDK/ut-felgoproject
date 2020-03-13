@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=zFelgoProject
+Exec=./app.run
+Icon=ic_launcher.png
+Terminal=false
+Type=Application
+X-Ubuntu-Touch=true
+X-Ubuntu-Supported-Orientations=portrait

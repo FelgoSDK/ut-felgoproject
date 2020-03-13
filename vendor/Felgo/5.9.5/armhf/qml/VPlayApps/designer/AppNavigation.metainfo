@@ -1,0 +1,157 @@
+MetaInfo {
+    Type {
+        name: "VPlayApps.ActivityIndicatorBarItem"
+        icon: "images/activityindicatorbaritem-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Activity Indicator Bar Item"
+            category: "V-Play App Navigation"
+            libraryIcon: "images/activityindicatorbaritem-icon.png"
+            version: "1.0"
+            requiredImport: "VPlayApps"
+        }
+    }
+
+    Type {
+        name: "VPlayApps.AppDrawer"
+        icon: "images/appdrawer-icon16.png"
+
+        ItemLibraryEntry {
+            name: "App Drawer"
+            category: "V-Play App Navigation"
+            libraryIcon: "images/appdrawer-icon.png"
+            version: "1.0"
+            requiredImport: "VPlayApps"
+        }
+    }
+
+    Type {
+        name: "VPlayApps.ButtonBarItem"
+        icon: "images/buttonbaritem-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Button Bar Item"
+            category: "V-Play App Navigation"
+            libraryIcon: "images/buttonbaritem-icon.png"
+            version: "1.0"
+            requiredImport: "VPlayApps"
+        }
+    }
+
+    Type {
+        name: "VPlayApps.IconButtonBarItem"
+        icon: "images/iconbuttonbaritem-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Icon Button Bar Item"
+            category: "V-Play App Navigation"
+            libraryIcon: "images/iconbuttonbaritem-icon.png"
+            version: "1.0"
+            requiredImport: "VPlayApps"
+        }
+    }
+
+    Type {
+        name: "VPlayApps.Navigation"
+        icon: "images/navigation-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Navigation"
+            category: "V-Play App Navigation"
+            libraryIcon: "images/navigation-icon.png"
+            version: "1.0"
+            requiredImport: "VPlayApps"
+        }
+    }
+
+    Type {
+        name: "VPlayApps.NavigationBar"
+        icon: "images/navigationbar-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Navigation Bar"
+            category: "V-Play App Navigation"
+            libraryIcon: "images/navigationbar-icon.png"
+            version: "1.0"
+            requiredImport: "VPlayApps"
+        }
+    }
+
+    Type {
+        name: "VPlayApps.NavigationBarItem"
+        icon: "images/navigationbaritem-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Navigation Bar Item"
+            category: "V-Play App Navigation"
+            libraryIcon: "images/navigationbaritem-icon.png"
+            version: "1.0"
+            requiredImport: "VPlayApps"
+        }
+    }
+
+    Type {
+        name: "VPlayApps.NavigationBarRow"
+        icon: "images/navigationbarrow-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Navigation Bar Row"
+            category: "V-Play App Navigation"
+            libraryIcon: "images/navigationbarrow-icon.png"
+            version: "1.0"
+            requiredImport: "VPlayApps"
+        }
+    }
+
+    Type {
+        name: "VPlayApps.NavigationItem"
+        icon: "images/navigationitem-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Navigation Item"
+            category: "V-Play App Navigation"
+            libraryIcon: "images/navigationitem-icon.png"
+            version: "1.0"
+            requiredImport: "VPlayApps"
+        }
+    }
+
+    Type {
+        name: "VPlayApps.NavigationStack"
+        icon: "images/navigationstack-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Navigation Stack"
+            category: "V-Play App Navigation"
+            libraryIcon: "images/navigationstack-icon.png"
+            version: "1.0"
+            requiredImport: "VPlayApps"
+        }
+    }
+
+    Type {
+        name: "VPlayApps.TabControl"
+          icon: "images/tabcontrol-icon16.png"
+
+          ItemLibraryEntry {
+              name: "Tab Control"
+              category: "V-Play App Navigation"
+              libraryIcon: "images/tabcontrol-icon.png"
+              version: "1.0"
+              requiredImport: "VPlayApps"
+          }
+    }
+
+    Type {
+        name: "VPlayApps.TextButtonBarItem"
+          icon: "images/textbuttonbaritem-icon16.png"
+
+          ItemLibraryEntry {
+              name: "Text Button Bar Item"
+              category: "V-Play App Navigation"
+              libraryIcon: "images/textbuttonbaritem-icon.png"
+              version: "1.0"
+              requiredImport: "VPlayApps"
+          }
+    }
+}

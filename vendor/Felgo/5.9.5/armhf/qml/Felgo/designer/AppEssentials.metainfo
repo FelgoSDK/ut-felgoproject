@@ -1,0 +1,40 @@
+MetaInfo {
+    Type {
+        name: "Felgo.Page"
+        icon: "images/page-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Page"
+            category: "Felgo App Essentials"
+            libraryIcon: "images/page-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.ListPage"
+        icon: "images/listpage-icon16.png"
+
+        ItemLibraryEntry {
+            name: "List Page"
+            category: "Felgo App Essentials"
+            libraryIcon: "images/listpage-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.AppFlickable"
+        icon: "images/appflickable-icon16.png"
+
+        ItemLibraryEntry {
+            name: "App Flickable"
+            category: "Felgo App Essentials"
+            libraryIcon: "images/appflickable-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+}

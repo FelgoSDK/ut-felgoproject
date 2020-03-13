@@ -1,0 +1,690 @@
+# Project file including Felgo libraries and paths for specific build target
+
+#################################################
+
+# Use Felgo 3D
+# CONFIG += felgo_3d_support
+
+# Use debug libraries
+# CONFIG += felgo_debug_support
+
+msvc|winphone {
+  # always enable debug libs for msvc
+  CONFIG += felgo_debug_support
+}
+
+# Use pre-built OpenSSL libs on Android
+CONFIG += android_openssl_support
+
+#################################################
+
+# Qt dependencies
+QT += qml quick widgets network multimedia sql websockets
+
+# Set local platform library path variable when environment variable is set
+_LOCAL_FELGO_PLATFORM_LIBRARY_PATH = $$(LOCAL_FELGO_PLATFORM_LIBRARY_PATH)
+!isEmpty(_LOCAL_FELGO_PLATFORM_LIBRARY_PATH){
+  LOCAL_FELGO_PLATFORM_LIBRARY_PATH = $$(LOCAL_FELGO_PLATFORM_LIBRARY_PATH)
+}
+
+# Add local platform qml path (Qt SDK's QML folder is added by default)
+!isEmpty(LOCAL_FELGO_PLATFORM_LIBRARY_PATH) {
+  QML_IMPORT_PATH += $$LOCAL_FELGO_PLATFORM_LIBRARY_PATH/qml
+}
+
+# Add import of Felgo QML module to support Designer
+isEmpty(LOCAL_FELGO_PLATFORM_LIBRARY_PATH) {
+  QML_DESIGNER_IMPORT_PATH += $$[QT_INSTALL_PREFIX]/import
+} else {
+  QML_DESIGNER_IMPORT_PATH += $$LOCAL_FELGO_PLATFORM_LIBRARY_PATH/import
+}
+export(QML_DESIGNER_IMPORT_PATH)
+
+# Felgo 3D dependencies
+# Qt3D is not supported yet on ios & winrt, and only after Qt 5.5
+winrt|winphone|ios: CONFIG -= felgo_3d_support
+felgo_3d_support: QT += 3dcore 3drender 3dinput 3dquick
+
+# Link Felgo libs
+versionAtLeast(QT_VERSION, 5.14.0) { android: FELGO_ANDROID_CUR_ARCH="_$${QT_ARCH}" }
+isEmpty(LOCAL_FELGO_PLATFORM_LIBRARY_PATH) {
+  INCLUDEPATH += $$[QT_INSTALL_PREFIX]/include/Felgo
+  LIBS += -L$$[QT_INSTALL_PREFIX]/lib
+} else {
+  INCLUDEPATH += $$LOCAL_FELGO_PLATFORM_LIBRARY_PATH/include/Felgo
+  LIBS += -L$$LOCAL_FELGO_PLATFORM_LIBRARY_PATH/lib
+}
+FELGO_LIB = Felgo$${FELGO_ANDROID_CUR_ARCH}
+
+felgo_debug_support {
+  linux-g++:CONFIG(debug, debug|release): FELGO_LIB = $${FELGO_LIB}_debug
+  else: FELGO_LIB = $$qtLibraryTarget($$FELGO_LIB)
+}
+
+LIBS += -l$$FELGO_LIB
+
+# Link zlib binary, needed for MiniZip (automatically linked with msvc, android and iOS)
+mingw|macx|linux-g++ {
+  LIBS += -lz
+}
+
+# Override PRODUCT_ values with automated supplied values
+!isEmpty(CI_PRODUCT_IDENTIFIER)   { PRODUCT_IDENTIFIER   = $$CI_PRODUCT_IDENTIFIER   }
+!isEmpty(CI_PRODUCT_VERSION_NAME) { PRODUCT_VERSION_NAME = $$CI_PRODUCT_VERSION_NAME }
+!isEmpty(CI_PRODUCT_VERSION_CODE) { PRODUCT_VERSION_CODE = $$CI_PRODUCT_VERSION_CODE }
+!isEmpty(CI_PRODUCT_LICENSE_KEY)  { PRODUCT_LICENSE_KEY  = $$CI_PRODUCT_LICENSE_KEY  }
+
+# Put PRODUCT_VERSION or PRODUCT_IDENTIFIER information (from project file) into config.json
+!isEmpty(PRODUCT_VERSION_CODE) | !isEmpty(PRODUCT_VERSION_NAME) | !isEmpty(PRODUCT_IDENTIFIER) {
+  qmlconfigjson_filepath = $$absolute_path("config.json", $$absolute_path("qml", $$_PRO_FILE_PWD_))
+  exists($$qmlconfigjson_filepath) {
+    # Read config
+    qmlconfigjson = "$$cat($$qmlconfigjson_filepath, blob)"
+    # Substitute values
+    !isEmpty(PRODUCT_VERSION_CODE) {
+      r = '"versioncode": $$PRODUCT_VERSION_CODE'
+      qmlconfigjson ~= s/[\'\"]versioncode[\'\"]:\s*[1-9][0-9]*/$${r}
+    }
+    !isEmpty(PRODUCT_VERSION_NAME) {
+      r = '"versionname": "$$PRODUCT_VERSION_NAME"'
+      qmlconfigjson ~= s/[\'\"]versionname[\'\"]:\s*[\'\"][0-9.]+[\'\"]/$${r}
+    }
+    !isEmpty(PRODUCT_IDENTIFIER) {
+      r = '"identifier": "$$PRODUCT_IDENTIFIER"'
+      qmlconfigjson ~= s/[\'\"]identifier[\'\"]:\s*[\'\"][a-zA-Z][a-zA-Z0-9.]*[a-zA-Z0-9][\'\"]/$${r}
+    }
+    # Write config  - file-read introduces newline at end, hence strip it
+    qmlconfigjson ~= s/\s*$/
+    qmlconfigjson ~= s/\r/
+    write_file($$qmlconfigjson_filepath, qmlconfigjson)
+  }
+}
+
+# Export PRODUCT_LICENSE_KEY as a define. Exported with string quotes.
+!isEmpty(PRODUCT_LICENSE_KEY) {
+  product_license_key = $$PRODUCT_LICENSE_KEY
+  product_license_key ~= s/\s*/
+
+  !isEmpty(product_license_key) {
+    DEFINES += PRODUCT_LICENSE_KEY=\\\"$$product_license_key\\\"
+  }
+}
+
+# Print Felgo project info when CI_BUILD=1 is set
+equals(CI_BUILD, 1) {
+  message(Felgo: IS_FELGO_BUILD: true)
+  !isEmpty(product_license_key) {
+    message(Felgo: PRODUCT_LICENSE_KEY: \'$$product_license_key\')
+  }
+  !isEmpty(PRODUCT_IDENTIFIER) {
+    message(Felgo: PRODUCT_IDENTIFIER: \'$$PRODUCT_IDENTIFIER\')
+  }
+  !isEmpty(PRODUCT_VERSION_CODE) {
+    message(Felgo: PRODUCT_VERSION_CODE: \'$$PRODUCT_VERSION_CODE\')
+  }
+  !isEmpty(PRODUCT_VERSION_NAME) {
+    message(Felgo: PRODUCT_VERSION_NAME: \'$$PRODUCT_VERSION_NAME\')
+  }
+  !isEmpty(FELGO_PLUGINS) {
+    message(Felgo: FELGO_PLUGINS: \'$$FELGO_PLUGINS\')
+  }
+}
+
+
+# Add iOS bundle files and product bundle identifier
+ios {
+  ic_files.files =  $$files($$_PRO_FILE_PWD_/ios/Icon*.png)
+  launch_files.files = $$files($$_PRO_FILE_PWD_/ios/Def*.png)
+  QMAKE_BUNDLE_DATA += ic_files launch_files
+  export(QMAKE_BUNDLE_DATA)
+
+  !equals(TEMPLATE, lib):exists( $$_PRO_FILE_PWD_/ios/Assets.xcassets ) {
+    QMAKE_ASSET_CATALOGS += $$_PRO_FILE_PWD_/ios/Assets.xcassets
+    QMAKE_ASSET_CATALOGS_APP_ICON = AppIcon
+    QMAKE_ASSET_CATALOGS_LAUNCH_IMAGE = LaunchImage
+    export(QMAKE_ASSET_CATALOGS)
+    export(QMAKE_ASSET_CATALOGS_APP_ICON)
+    export(QMAKE_ASSET_CATALOGS_LAUNCH_IMAGE)
+  }
+
+  # set product bundle identifier
+  !isEmpty(PRODUCT_IDENTIFIER) {
+    xcode_product_bundle_identifier_setting.value = $${PRODUCT_IDENTIFIER}
+  }
+
+  !isEmpty(PRODUCT_VERSION_NAME) {
+    product_version_name.name = PRODUCT_VERSION_NAME
+    product_version_name.value = $${PRODUCT_VERSION_NAME}
+    QMAKE_MAC_XCODE_SETTINGS += product_version_name
+  }
+  !isEmpty(PRODUCT_VERSION_CODE) {
+    product_version_code.name = PRODUCT_VERSION_CODE
+    product_version_code.value = $${PRODUCT_VERSION_CODE}
+    QMAKE_MAC_XCODE_SETTINGS += product_version_code
+  }
+  !isEmpty(PRODUCT_IDENTIFIER) {
+    product_identifier.name = PRODUCT_IDENTIFIER
+    product_identifier.value = $${PRODUCT_IDENTIFIER}
+    QMAKE_MAC_XCODE_SETTINGS += product_identifier
+  }
+}
+
+# User-specific Felgo resources
+exists ( $$PWD/../../../../Felgo/felgo_license.key ) {
+  RESOURCES += $$PWD/../common/felgo/resources_user.qrc
+}
+
+android {
+  android_openssl_support {
+    ssl_version = 1_1
+    ssl_lib = ssl_$${ssl_version}
+    crypto_lib = crypto_$${ssl_version}
+
+    isEmpty(LOCAL_FELGO_PLATFORM_LIBRARY_PATH) {
+      android_ssl_libs_folder = $$[QT_INSTALL_PREFIX]/lib
+    } else {
+      android_ssl_libs_folder = $$LOCAL_FELGO_PLATFORM_LIBRARY_PATH/lib
+    }
+    versionAtLeast(QT_VERSION, 5.14.0) {
+      ANDROID_EXTRA_LIBS += $${android_ssl_libs_folder}/x86/lib$${crypto_lib}.so $${android_ssl_libs_folder}/x86_64/lib$${crypto_lib}.so $${android_ssl_libs_folder}/armeabi-v7a/lib$${crypto_lib}.so $${android_ssl_libs_folder}/arm64-v8a/lib$${crypto_lib}.so
+      ANDROID_EXTRA_LIBS += $${android_ssl_libs_folder}/x86/lib$${ssl_lib}.so    $${android_ssl_libs_folder}/x86_64/lib$${ssl_lib}.so    $${android_ssl_libs_folder}/armeabi-v7a/lib$${ssl_lib}.so    $${android_ssl_libs_folder}/arm64-v8a/lib$${ssl_lib}.so
+
+      android_ssl_libs_folder = $${android_ssl_libs_folder}/$${QT_ARCH}
+      LIBS += -L$${android_ssl_libs_folder}
+    }
+
+    LIBS += -l$${ssl_lib} -l$${crypto_lib}
+    ANDROID_EXTRA_LIBS += $${android_ssl_libs_folder}/lib$${crypto_lib}.so $${android_ssl_libs_folder}/lib$${ssl_lib}.so
+  }
+
+  versionAtLeast(QT_VERSION, 5.14.0) {
+    isEmpty(LOCAL_FELGO_PLATFORM_LIBRARY_PATH) {
+      ANDROID_EXTRA_LIBS += $$[QT_INSTALL_PREFIX]/lib/libFelgo_arm64-v8a.so $$[QT_INSTALL_PREFIX]/lib/libFelgo_armeabi-v7a.so $$[QT_INSTALL_PREFIX]/lib/libFelgo_x86.so $$[QT_INSTALL_PREFIX]/lib/libFelgo_x86_64.so
+    } else {
+      ANDROID_EXTRA_LIBS += $$LOCAL_FELGO_PLATFORM_LIBRARY_PATH/lib/libFelgo_arm64-v8a.so $$LOCAL_FELGO_PLATFORM_LIBRARY_PATH/lib/libFelgo_armeabi-v7a.so $$LOCAL_FELGO_PLATFORM_LIBRARY_PATH/lib/libFelgo_x86.so $$LOCAL_FELGO_PLATFORM_LIBRARY_PATH/lib/libFelgo_x86_64.so
+    }
+  }
+
+  # Export Qt/qmake build information to gradle.properties, for variable use at Gradle
+  gradle_properties = ""
+  !isEmpty(PRODUCT_VERSION_NAME) { gradle_properties += "productVersionName = $$PRODUCT_VERSION_NAME" }
+  !isEmpty(PRODUCT_VERSION_CODE) { gradle_properties += "productVersionCode = $$PRODUCT_VERSION_CODE" }
+  !isEmpty(PRODUCT_IDENTIFIER)   { gradle_properties += "productIdentifier = $$PRODUCT_IDENTIFIER" }
+  !isEmpty(ANDROID_TARGET_ARCH)  { gradle_properties += "targetArchitecture = $$ANDROID_TARGET_ARCH" }
+  gradle_properties += "qtVersion = $$QT_VERSION"
+  gradle_properties += "qtVersionInt = $$QT_MAJOR_VERSION$$QT_MINOR_VERSION$$QT_PATCH_VERSION"
+  write_file($$absolute_path("gradle.properties", $$OUT_PWD), gradle_properties)
+  write_file($$absolute_path("gradle.properties", $$absolute_path("android-build", $$OUT_PWD)), gradle_properties)
+}
+
+# Plugin dependencies
+ios {
+    # downwards compatibility with VPLAY_PLUGINS setting
+    !isEmpty(VPLAY_PLUGINS): FELGO_PLUGINS += $$VPLAY_PLUGINS
+
+    # Can be overridden by user
+    isEmpty(IOS_PLUGIN_PATH): IOS_PLUGIN_PATH = $$_PRO_FILE_PWD_/ios
+
+    # Search paths for compiler
+    LIBS += -F$$IOS_PLUGIN_PATH
+    LIBS += -L$$IOS_PLUGIN_PATH
+
+    # AddressBook framework for Contacts Access in NativeUtils
+    LIBS += -framework AddressBook
+
+    # Photos framework for Photos Access in NativeUtils
+    LIBS += -framework Photos
+
+    # WebKit framework for plugins
+    contains(FELGO_PLUGINS, admob)|contains(FELGO_PLUGINS, onesignal) {
+      LIBS += -weak_framework WebKit
+    }
+
+    contains(FELGO_PLUGINS, admob) {
+      # AdMob framework
+      LIBS += -framework GoogleMobileAds
+      QMAKE_LFLAGS += -Wl,-force_load,$$IOS_PLUGIN_PATH/GoogleMobileAds.framework/GoogleMobileAds
+
+      # AdMob dependencies
+      LIBS += -weak_framework AdSupport
+      LIBS += -weak_framework SafariServices
+      LIBS += -framework AudioToolbox
+      LIBS += -framework AVFoundation
+      LIBS += -framework CFNetwork
+      LIBS += -framework CoreGraphics
+      LIBS += -framework CoreMedia
+      LIBS += -framework CoreMotion
+      LIBS += -framework CoreTelephony
+      LIBS += -framework CoreVideo
+      LIBS += -framework GLKit
+      LIBS += -framework MediaPlayer
+      LIBS += -framework MessageUI
+      LIBS += -framework MobileCoreServices
+      LIBS += -framework OpenGLES
+      LIBS += -framework StoreKit
+      LIBS += -framework SystemConfiguration
+    }
+    contains(FELGO_PLUGINS, amplitude)  {
+      # Amplitude framework
+      LIBS += -framework Amplitude
+      QMAKE_LFLAGS += -Wl,-force_load,$$IOS_PLUGIN_PATH/Amplitude.framework/Amplitude
+    }
+    contains(FELGO_PLUGINS, chartboost) {
+      # Chartboost framework
+      LIBS += -framework Chartboost
+      QMAKE_LFLAGS += -Wl,-force_load,$$IOS_PLUGIN_PATH/Chartboost.framework/Chartboost
+
+      # Chartboost dependencies
+      LIBS += -framework SystemConfiguration
+      LIBS += -framework StoreKit
+      LIBS += -framework AdSupport
+      LIBS += -framework Foundation
+      LIBS += -framework CoreGraphics
+      LIBS += -framework UIKit
+    }
+    contains(FELGO_PLUGINS, facebook) {
+      # Facebook framework
+      LIBS += -framework FBSDKCoreKit
+      QMAKE_LFLAGS += -Wl,-force_load,$$IOS_PLUGIN_PATH/FBSDKCoreKit.framework/FBSDKCoreKit
+      LIBS += -framework FBSDKLoginKit
+      QMAKE_LFLAGS += -Wl,-force_load,$$IOS_PLUGIN_PATH/FBSDKLoginKit.framework/FBSDKLoginKit
+
+      # Facebook SDK dependencies:
+      LIBS += -framework Accelerate # (iOS included)
+    }
+    contains(FELGO_PLUGINS, firebase) {
+      # Firebase Analytics
+      LIBS += -framework FirebaseAnalytics
+      QMAKE_LFLAGS += -Wl,-force_load,$$IOS_PLUGIN_PATH/FirebaseAnalytics.framework/FirebaseAnalytics
+      LIBS += -framework FirebaseCore
+      QMAKE_LFLAGS += -Wl,-force_load,$$IOS_PLUGIN_PATH/FirebaseCore.framework/FirebaseCore
+      LIBS += -framework FirebaseCoreDiagnostics
+      QMAKE_LFLAGS += -Wl,-force_load,$$IOS_PLUGIN_PATH/FirebaseCoreDiagnostics.framework/FirebaseCoreDiagnostics
+      LIBS += -framework FirebaseNanoPB
+      QMAKE_LFLAGS += -Wl,-force_load,$$IOS_PLUGIN_PATH/FirebaseNanoPB.framework/FirebaseNanoPB
+      LIBS += -framework nanopb
+      QMAKE_LFLAGS += -Wl,-force_load,$$IOS_PLUGIN_PATH/nanopb.framework/nanopb
+      LIBS += -framework leveldb-library
+      QMAKE_LFLAGS += -Wl,-force_load,$$IOS_PLUGIN_PATH/leveldb-library.framework/leveldb-library
+      LIBS += -framework FirebaseInstanceID
+      QMAKE_LFLAGS += -Wl,-force_load,$$IOS_PLUGIN_PATH/FirebaseInstanceID.framework/FirebaseInstanceID
+      LIBS += -framework GoogleToolboxForMac
+      QMAKE_LFLAGS += -Wl,-force_load,$$IOS_PLUGIN_PATH/GoogleToolboxForMac.framework/GoogleToolboxForMac
+
+      # Firebase Auth
+      LIBS += -framework FirebaseAuth
+      QMAKE_LFLAGS += -Wl,-force_load,$$IOS_PLUGIN_PATH/FirebaseAuth.framework/FirebaseAuth
+      LIBS += -framework GTMSessionFetcher
+      QMAKE_LFLAGS += -Wl,-force_load,$$IOS_PLUGIN_PATH/GTMSessionFetcher.framework/GTMSessionFetcher
+      # For Firebase Auth Google sign in feature:
+      LIBS += -framework GoogleSignIn
+      QMAKE_LFLAGS += -Wl,-force_load,$$IOS_PLUGIN_PATH/GoogleSignIn.framework/GoogleSignIn
+      LIBS += -framework AppAuth
+      QMAKE_LFLAGS += -Wl,-force_load,$$IOS_PLUGIN_PATH/AppAuth.framework/AppAuth
+      LIBS += -framework GTMAppAuth
+      QMAKE_LFLAGS += -Wl,-force_load,$$IOS_PLUGIN_PATH/GTMAppAuth.framework/GTMAppAuth
+      # Bundle embedded libraries (the .path = Frameworks is important,
+      # qmake uses this to detect it is an embedded library)
+      firebase_embedded_deployment.files = $$IOS_PLUGIN_PATH/AppAuth.framework $$IOS_PLUGIN_PATH/GTMAppAuth.framework $$IOS_PLUGIN_PATH/GTMSessionFetcher.framework
+      firebase_embedded_deployment.path = Frameworks
+      QMAKE_BUNDLE_DATA += firebase_embedded_deployment
+      QMAKE_RPATHDIR += @executable_path/Frameworks
+
+      # Firebase Database
+      LIBS += -framework FirebaseDatabase
+      QMAKE_LFLAGS += -Wl,-force_load,$$IOS_PLUGIN_PATH/FirebaseDatabase.framework/FirebaseDatabase
+      # Firebase Storage
+      LIBS += -framework FirebaseStorage
+      QMAKE_LFLAGS += -Wl,-force_load,$$IOS_PLUGIN_PATH/FirebaseStorage.framework/FirebaseStorage
+      # Firebase Dependencies
+      LIBS += -framework CFNetwork
+      LIBS += -framework LocalAuthentication
+      LIBS += -framework SafariServices
+      LIBS += -framework Security
+      LIBS += -framework StoreKit
+      LIBS += -framework SystemConfiguration
+      LIBS += -licucore
+
+      exists( $$IOS_PLUGIN_PATH/GoogleService-Info.plist ) {
+        fcm_deployment.files = $$IOS_PLUGIN_PATH/GoogleService-Info.plist
+        fcm_deployment.path =
+        QMAKE_BUNDLE_DATA += fcm_deployment
+      }
+    }
+    contains(FELGO_PLUGINS, flurry) {
+      # Flurry SDK
+      LIBS += -lFlurry
+      QMAKE_LFLAGS += -Wl,-force_load,$$IOS_PLUGIN_PATH/libFlurry.a
+
+      # Flurry dependencies
+      LIBS += -framework Security
+      LIBS += -framework SystemConfiguration
+      LIBS += -framework StoreKit
+    }
+    contains(FELGO_PLUGINS, gamecenter) {
+      # GameCenter dependencies
+      LIBS += -framework GameKit
+    }
+    contains(FELGO_PLUGINS, gcm) {
+      # No Bitcode support for GCM
+      CONFIG -= bitcode
+
+      # GoogleCloudMessaging SDK
+      LIBS += -lGGLCloudMessaging
+      LIBS += -lGGLCore
+      LIBS += -lGGLInstanceIDLib
+      LIBS += -lGIP_Locale
+      LIBS += -lGIP_Reachability
+      LIBS += -lGSDK_Overload
+      LIBS += -lGSDK_Overload_external
+      LIBS += -lGTMSessionFetcher_core_external
+      LIBS += -lGTMSessionFetcher_full_external
+      LIBS += -lGTMStackTrace_external
+      LIBS += -lGTM_AddressBook_external
+      LIBS += -lGTM_DebugUtils_external
+      LIBS += -lGTM_GTMURLBuilder_external
+      LIBS += -lGTM_KVO_external
+      LIBS += -lGTM_NSData+zlib_external
+      LIBS += -lGTM_NSDictionary+URLArguments_external
+      LIBS += -lGTM_NSScannerJSON_external
+      LIBS += -lGTM_NSStringHTML_external
+      LIBS += -lGTM_NSStringXML_external
+      LIBS += -lGTM_Regex_external
+      LIBS += -lGTM_RoundedRectPath_external
+      LIBS += -lGTM_StringEncoding_external
+      LIBS += -lGTM_SystemVersion_external
+      LIBS += -lGTM_UIFont+LineHeight_external
+      LIBS += -lGTM_core_external
+      LIBS += -lGTM_iPhone_external
+      LIBS += -lGcmLib
+      LIBS += -lProtocolBuffers_external
+      QMAKE_LFLAGS += -Wl,-force_load,$$IOS_PLUGIN_PATH/libGGLCloudMessaging.a
+      QMAKE_LFLAGS += -Wl,-force_load,$$IOS_PLUGIN_PATH/libGcmLib.a
+      QMAKE_LFLAGS += -Wl,-force_load,$$IOS_PLUGIN_PATH/libGTM_UIFont+LineHeight_external.a
+      QMAKE_LFLAGS += -Wl,-force_load,$$IOS_PLUGIN_PATH/libGTM_NSDictionary+URLArguments_external.a
+      QMAKE_LFLAGS += -Wl,-force_load,$$IOS_PLUGIN_PATH/libGTM_NSData+zlib_external.a
+      QMAKE_LFLAGS += -Wl,-force_load,$$IOS_PLUGIN_PATH/libGGLInstanceIDLib.a
+      QMAKE_LFLAGS += -Wl,-force_load,$$IOS_PLUGIN_PATH/libGGLCore.a
+
+      # GoogleCloudMessaging bundle files
+      exists( $$IOS_PLUGIN_PATH/GoogleService-Info.plist ) {
+        gcm_deployment.files = $$IOS_PLUGIN_PATH/GoogleService-Info.plist
+        gcm_deployment.path =
+        QMAKE_BUNDLE_DATA += gcm_deployment
+      }
+
+      # GoogleCloudMessaging dependencies
+      LIBS += -framework AddressBook
+      LIBS += -framework AssetsLibrary
+      LIBS += -framework CoreFoundation
+      LIBS += -framework CoreLocation
+      LIBS += -framework CoreMotion
+      LIBS += -framework MessageUI
+      LIBS += -framework SystemConfiguration
+      LIBS += -framework StoreKit
+      LIBS += -framework Foundation
+    }
+    contains(FELGO_PLUGINS, gigya) {
+      # Gigya framework
+      LIBS += -framework GigyaSDK
+      QMAKE_LFLAGS += -Wl,-force_load,$$IOS_PLUGIN_PATH/GigyaSDK.framework/GigyaSDK
+      QMAKE_RPATHDIR += @executable_path/Frameworks
+
+      # GigyaSDK does not contain bitcode
+      CONFIG -= bitcode
+    }
+    contains(FELGO_PLUGINS, hockeyapp) {
+      # HockeyApp framework
+      LIBS += -framework HockeySDK
+      QMAKE_LFLAGS += -Wl,-force_load,$$IOS_PLUGIN_PATH/HockeySDK.framework/HockeySDK
+
+      # HockeyApp dependencies
+      LIBS += -framework AssetsLibrary
+      LIBS += -framework CoreText
+      LIBS += -framework CoreGraphics
+      LIBS += -framework MobileCoreServices
+      LIBS += -framework QuartzCore
+      LIBS += -framework QuickLook
+      LIBS += -framework Security
+      LIBS += -framework SystemConfiguration
+
+      # HockeyApp bundle files
+      hockey_deployment.files = $$IOS_PLUGIN_PATH/HockeySDK.framework/Versions/A/Resources/HockeySDKResources.bundle
+      hockey_deployment.path =
+      QMAKE_BUNDLE_DATA += hockey_deployment
+    }
+    contains(FELGO_PLUGINS, onesignal) {
+      # OneSignal framework
+      LIBS += -framework OneSignal
+      QMAKE_LFLAGS += -Wl,-force_load,$$IOS_PLUGIN_PATH/OneSignal.framework/OneSignal
+
+      # OneSignal dependencies
+      LIBS += -framework SystemConfiguration
+      LIBS += -framework UserNotifications
+    }
+    contains(FELGO_PLUGINS, parse) {
+      # Parse framework
+      LIBS += -framework Bolts
+      LIBS += -framework Parse
+      QMAKE_LFLAGS += -Wl,-force_load,$$IOS_PLUGIN_PATH/Parse.framework/Parse
+
+      # Parse dependencies
+      LIBS += -framework AudioToolbox
+      LIBS += -framework CFNetwork
+      LIBS += -framework CoreGraphics
+      LIBS += -framework CoreLocation
+      LIBS += -framework QuartzCore
+      LIBS += -framework Security
+      LIBS += -framework StoreKit
+      LIBS += -framework SystemConfiguration
+      LIBS += -lz
+    }
+    contains(FELGO_PLUGINS, soomla) {
+      # Soomla SDK
+      LIBS += -lSoomlaiOSStore
+      LIBS += -lKeeva
+      QMAKE_LFLAGS += -Wl,-force_load,$$IOS_PLUGIN_PATH/libSoomlaiOSStore.a
+      QMAKE_LFLAGS += -Wl,-force_load,$$IOS_PLUGIN_PATH/libKeeva.a
+
+      # Soomla dependencies
+      LIBS += -framework Security
+      LIBS += -framework StoreKit
+      # include SSL libs and apple root certificate for receipt verification:
+      LIBS += "-lcrypto"
+      LIBS += "-lssl"
+      apple_root_cert.files = $$IOS_PLUGIN_PATH/AppleIncRootCertificate.cer
+      apple_root_cert.path =
+      QMAKE_BUNDLE_DATA += apple_root_cert
+    }
+    contains(FELGO_PLUGINS, wikitude) {
+      # Bundle embedded library (the .path = Frameworks is important,
+      # qmake uses this to detect it is an embedded library)
+      wikitude_deployment.files = $$IOS_PLUGIN_PATH/WikitudeSDK.framework
+      wikitude_deployment.path = Frameworks
+      QMAKE_BUNDLE_DATA += wikitude_deployment
+      # Load library at runtime
+      QMAKE_LFLAGS += -Wl,-force_load,$$IOS_PLUGIN_PATH/WikitudeSDK.framework/WikitudeSDK
+
+      QMAKE_RPATHDIR += @executable_path/Frameworks
+    }
+}
+
+################## This content is copied from vplaydeployment.pri ##################
+
+# This file is based on the Qt Quick 2 Controls Application wizard of Qt Creator 3.0.
+# It is a modified version of the original qtquick2controlsapplicationviewer.pri generated from QtCreator for easier deployment with Felgo.
+# the difference is that is supports absolute paths as DEPLOYMENTFOLDERS source and correct deployment when the pro file is located in a different folder than the qtquick2controlsapplicationviewer
+# The code below handles deployment to Android and iOS aswell as copying
+# of the application data to shadow build directories on desktop.
+
+defineTest(qtcAddDeployment) {
+
+# add all deployment folders as INSTALLS to show them in the project tree (assumption: make install is not used)
+for(deploymentfolder, DEPLOYMENTFOLDERS) {
+    item = item$${deploymentfolder}
+
+    # set item source
+    greaterThan(QT_MAJOR_VERSION, 4) {
+        itemsources = $${item}.files
+    } else {
+        itemsources = $${item}.sources
+    }
+    $$itemsources = $$eval($${deploymentfolder}.source)
+    #set item path
+    itempath = $${item}.path
+    deploymentPath = $$eval($${deploymentfolder}.target)
+    android {
+        $$itempath = /assets/$$deploymentPath
+    }
+    else:isEmpty(deploymentPath) {
+        $$itempath = $$OUT_PWD
+    }
+    else {
+        $$itempath = $$deploymentPath
+    }
+    export($$itemsources)
+    export($$itempath)
+    INSTALLS += $$item
+}
+
+
+#MAINPROFILEPWD = $$PWD # this was the original version
+# this is different than the normal qtquick2controlsapplicationviewer!
+# it is necessary, because for the demos the qtquick2controlsapplicationviewer gets included from the shared directory, but the qml deploymentfolders should be added relative to the demo directory
+# this gets set in each demo game and is needed, because the projectinclude.pri file is in a different directory than the demos (in the directory "shared")
+isEmpty(DEPLOYMENTFOLDERS_SOURCE) {
+    MAINPROFILEPWD = $$_PRO_FILE_PWD_
+} else {
+    MAINPROFILEPWD = $$DEPLOYMENTFOLDERS_SOURCE
+}
+felgo_debug:message(MAINPROFILEPWD: $$MAINPROFILEPWD)
+
+win32 {
+    copyCommand =
+    for(deploymentfolder, DEPLOYMENTFOLDERS) {
+
+        source = $$eval($${deploymentfolder}.source)
+        felgo_debug:message(original source of deploymentfolder: $$source)
+
+        # this regular expression looks for a path with the second character being a colon, e.g. C:/ or D:\
+        # i.e. when the regexp returns a string, this means the path was set by defining an absolute path - in that case NO MAINPROFILEPWD should be appended below
+        isAbsolutePathWindows = $$find(source, .:)
+        felgo_debug:message(isAbsolutePathWindows: $$isAbsolutePathWindows)
+
+        isEmpty(isAbsolutePathWindows) {
+            source = $$MAINPROFILEPWD/$$eval($${deploymentfolder}.source)
+            felgo_debug:message(appending the pro file to the beginning of the file name; as the deploymentfolder source was a relative path; new source: $$source)
+        }
+
+        source = $$replace(source, /, \\)
+        sourcePathSegments = $$split(source, \\)
+
+        targetAbsolutePath = $$eval($${deploymentfolder}.targetAbsolutePath)
+        #felgo_debug:message(targetAbsolutePath: $$targetAbsolutePath)
+        !isEmpty(targetAbsolutePath) {
+            target = $$targetAbsolutePath
+        } else {
+            # this automatically appends the name of the project to the target - to prevent that, use targetAbsolutePath above
+            target = $$OUT_PWD/$$eval($${deploymentfolder}.target)/$$last(sourcePathSegments)
+        }
+
+        # if we have winRT, deployment folders need to be added in the /release or /debug sub dir
+        winrt {
+            target = $$OUT_PWD/$$DESTDIR/$$eval($${deploymentfolder}.target)/$$last(sourcePathSegments)
+        }
+
+        target = $$replace(target, /, \\)
+        target ~= s,\\\\\\.?\\\\,\\,
+
+        #felgo_debug:message(sourcePathSegments: $$sourcePathSegments)
+        #felgo_debug:message(target dir: $$target)
+
+        winrt:isEmpty(DESTDIR) {
+            felgo_debug:message(SKIP Copying DeploymentFolders for WINRT with no DESTDIR)
+        }
+        else {
+            !isEqual(source,$$target) {
+                !isEmpty(copyCommand):copyCommand += &&
+                isEqual(QMAKE_DIR_SEP, \\) {
+                    copyCommand += $(COPY_DIR) \"$$source\" \"$$target\"
+                } else {
+                    source = $$replace(source, \\\\, /)
+                    target = $$OUT_PWD/$$eval($${deploymentfolder}.target)
+                    target = $$replace(target, \\\\, /)
+                    copyCommand += test -d \"$$target\" || mkdir -p \"$$target\" && cp -r \"$$source\" \"$$target\"
+                }
+            }
+        }
+    }
+    !isEmpty(copyCommand) {
+        copyCommand = @echo Copying application data... && $$copyCommand
+        copydeploymentfolders.commands = $$copyCommand
+        first.depends = $(first) copydeploymentfolders
+        export(first.depends)
+        export(copydeploymentfolders.commands)
+        QMAKE_EXTRA_TARGETS += first copydeploymentfolders
+    }
+} else:!android:unix|ios { # if platform is not android but unix or iOS (true for mac, linux, ios, ...)
+    copyCommand =
+    for(deploymentfolder, DEPLOYMENTFOLDERS) {
+
+        source = $$eval($${deploymentfolder}.source)
+        # NOTE: DEPLOYMENTFOLDER may also be set to an absolute path - in that case, do not append $$MAINPROFILEPWD!
+        # this regexp looks for a path that starts with a slash, e.g. /usr/ or /opt/ - if it is not empty, this means it is a relative path and the path to the MAINPROFILE should be appended
+        isAbsolutePathUnix = $$find(source, ^/)
+        isEmpty(isAbsolutePathUnix) {
+            source = $$MAINPROFILEPWD/$$eval($${deploymentfolder}.source)
+        }
+        source = $$replace(source, \\\\, /)
+        ios {
+            target = $CODESIGNING_FOLDER_PATH/$$eval($${deploymentfolder}.target)
+        }
+        else:macx {
+            target = $$OUT_PWD/$${TARGET}.app/Contents/Resources/$$eval($${deploymentfolder}.target)
+        } else {
+            target = $$OUT_PWD/$$eval($${deploymentfolder}.target)
+        }
+        target = $$replace(target, \\\\, /)
+        sourcePathSegments = $$split(source, /)
+        targetFullPath = $$target/$$last(sourcePathSegments)
+        targetFullPath ~= s,/\\.?/,/,
+        !isEqual(source,$$targetFullPath) {
+            !isEmpty(copyCommand):copyCommand += &&
+            ios {
+                copyCommand += mkdir -p \"$$target\"
+                copyCommand += && cp -r \"$$source\" \"$$target\"
+            }
+            else {
+                copyCommand += $(MKDIR) \"$$target\"
+                copyCommand += && $(COPY_DIR) \"$$source\" \"$$target\"
+            }
+        }
+    }
+    !isEmpty(copyCommand) {
+        ios {
+            copyCommand = echo Copying application data... && $$copyCommand
+            !isEmpty(QMAKE_POST_LINK): QMAKE_POST_LINK += ";"
+            QMAKE_POST_LINK += "$$copyCommand"
+            export(QMAKE_POST_LINK)
+        }
+       else {
+            copyCommand = @echo Copying application data... && $$copyCommand
+            copydeploymentfolders.commands = $$copyCommand
+            first.depends = $(first) copydeploymentfolders
+            export(first.depends)
+            export(copydeploymentfolders.commands)
+            QMAKE_EXTRA_TARGETS += first copydeploymentfolders
+        }
+    }
+}
+
+export (ICON)
+export (INSTALLS)
+export (DEPLOYMENT)
+export (LIBS)
+export (QMAKE_EXTRA_TARGETS)
+}
+
+# finally call the execution (i.e. copying) of DEPLOYMENTFOLDERS, which is called after the user's .pro file
+qtcAddDeployment()
+

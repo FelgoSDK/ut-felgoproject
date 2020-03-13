@@ -1,0 +1,53 @@
+MetaInfo {
+    Type {
+        name: "VPlay.JoystickControllerHUD"
+        icon: "images/joystickcontrollerhud-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Joystick Controller HUD"
+            category: "V-Play Game Input"
+            libraryIcon: "images/joystickcontrollerhud-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+
+    Type {
+        name: "VPlay.SimpleButton"
+        icon: "images/simplebutton-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Simple Button"
+            category: "V-Play Game Input"
+            libraryIcon: "images/simplebutton-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+
+    Type {
+        name: "VPlay.StyledButton"
+        icon: "images/styledbutton-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Styled Button"
+            category: "V-Play Game Input"
+            libraryIcon: "images/styledbutton-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+
+    Type {
+        name: "VPlay.TwoAxisController"
+        icon: "images/twoaxiscontroller-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Two Axis Controller"
+            category: "V-Play Game Input"
+            libraryIcon: "images/twoaxiscontroller-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+}

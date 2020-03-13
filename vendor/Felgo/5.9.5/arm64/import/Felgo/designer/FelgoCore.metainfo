@@ -1,0 +1,40 @@
+MetaInfo {
+    Type {
+        name: "Felgo.EntityBase"
+        icon: "images/entitybase-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Entity Base"
+            category: "Felgo Game Essentials"
+            libraryIcon: "images/entitybase-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.Scene"
+        icon: "images/scene-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Scene"
+            category: "Felgo Game Essentials"
+            libraryIcon: "images/scene-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.SyncedStore"
+        icon: "images/syncedstore-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Synced Store"
+            category: "Felgo Game Essentials"
+            libraryIcon: "images/syncedstore-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+}

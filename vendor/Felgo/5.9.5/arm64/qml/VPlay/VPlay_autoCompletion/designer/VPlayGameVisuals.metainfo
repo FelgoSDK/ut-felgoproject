@@ -1,0 +1,209 @@
+MetaInfo {
+    Type {
+        name: "VPlay.AnimatedSpriteVPlay"
+        icon: "images/animatedspritevplay-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Animated Sprite VPlay"
+            category: "V-Play Game Visuals"
+            libraryIcon: "images/animatedspritevplay-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+
+    Type {
+        name: "VPlay.BackgroundImage"
+        icon: "images/backgroundimage-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Background Image"
+            category: "V-Play Game Visuals"
+            libraryIcon: "images/backgroundimage-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+
+    Type {
+        name: "VPlay.CameraVPlay"
+        icon: "images/cameravplay-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Camera VPlay"
+            category: "V-Play Game Visuals"
+            libraryIcon: "images/cameravplay-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+
+    Type {
+        name: "VPlay.LineItem"
+        icon: "images/lineitem-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Line Item"
+            category: "V-Play Game Visuals"
+            libraryIcon: "images/lineitem-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+
+    Type {
+        name: "VPlay.MultiResolutionImage"
+        icon: "images/multiresolutionimage-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Multi Resolution Image"
+            category: "V-Play Game Visuals"
+            libraryIcon: "images/multiresolutionimage-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+
+    Type {
+        name: "VPlay.ParallaxItem"
+        icon: "images/parallaxitem-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Parallax Item"
+            category: "V-Play Game Visuals"
+            libraryIcon: "images/parallaxitem-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+
+    Type {
+        name: "VPlay.ParallaxScrollingBackground"
+        icon: "images/parallaxscrollingbackground-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Parallax Scrolling Background"
+            category: "V-Play Game Visuals"
+            libraryIcon: "images/parallaxscrollingbackground-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+
+    Type {
+        name: "VPlay.PolygonItem"
+        icon: "images/polygonitem-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Polygon Item"
+            category: "V-Play Game Visuals"
+            libraryIcon: "images/polygonitem-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+
+    Type {
+        name: "VPlay.SpineSkeleton"
+        icon: "images/spineskeleton-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Spine Skeleton"
+            category: "V-Play Game Visuals"
+            libraryIcon: "images/spineskeleton-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+
+    Type {
+        name: "VPlay.SpriteSequenceVPlay"
+        icon: "images/spritesequencevplay-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Sprite Sequence VPlay"
+            category: "V-Play Game Visuals"
+            libraryIcon: "images/spritesequencevplay-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+
+    Type {
+        name: "VPlay.SpriteVPlay"
+        icon: "images/spritevplay-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Sprite VPlay"
+            category: "V-Play Game Visuals"
+            libraryIcon: "images/spritevplay-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+
+    Type {
+        name: "VPlay.TexturePackerAnimatedSpriteVPlay"
+        icon: "images/texturepackeranimatedspritevplay-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Texture Packer Animated Sprite VPlay"
+            category: "V-Play Game Visuals"
+            libraryIcon: "images/texturepackeranimatedspritevplay-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+
+    Type {
+        name: "VPlay.TexturePackerSpriteSequenceVPlay"
+        icon: "images/texturepackerspritesequencevplay-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Texture Packer Sprite Sequence VPlay"
+            category: "V-Play Game Visuals"
+            libraryIcon: "images/texturepackerspritesequencevplay-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+
+    Type {
+        name: "VPlay.TexturePackerSpriteVPlay"
+        icon: "images/texturepackerspritevplay-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Texture Packer Sprite VPlay"
+            category: "V-Play Game Visuals"
+            libraryIcon: "images/texturepackerspritevplay-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+
+    Type {
+        name: "VPlay.SlotMachine"
+        icon: "images/slotmachine-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Slot Machine"
+            category: "V-Play Game Visuals"
+            libraryIcon: "images/slotmachine-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+
+    Type {
+        name: "VPlay.ParticleVPlay"
+        icon: "images/particlevplay-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Particle VPlay"
+            category: "V-Play Game Visuals"
+            libraryIcon: "images/particlevplay-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+}

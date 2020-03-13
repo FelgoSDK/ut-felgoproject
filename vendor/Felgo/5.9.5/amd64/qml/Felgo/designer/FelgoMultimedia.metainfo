@@ -1,0 +1,40 @@
+MetaInfo {
+    Type {
+        name: "Felgo.AlphaVideo"
+        icon: "images/alphavideo-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Alpha Video"
+            category: "Felgo Multimedia"
+            libraryIcon: "images/alphavideo-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.BackgroundMusic"
+        icon: "images/backgroundmusic-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Background Music"
+            category: "Felgo Multimedia"
+            libraryIcon: "images/backgroundmusic-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.SoundEffect"
+        icon: "images/soundeffectvplay-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Sound Effect"
+            category: "Felgo Multimedia"
+            libraryIcon: "images/soundeffectvplay-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+}

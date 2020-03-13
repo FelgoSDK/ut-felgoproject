@@ -1,0 +1,393 @@
+MetaInfo {
+    Type {
+        name: "VPlayApps.AppActivityIndicator"
+        icon: "images/appactivityindicator-icon16.png"
+
+        ItemLibraryEntry {
+            name: "App Activity Indicator"
+            category: "V-Play App Controls"
+            libraryIcon: "images/appactivityindicator-icon.png"
+            version: "1.0"
+            requiredImport: "VPlayApps"
+        }
+    }
+
+    Type {
+        name: "VPlayApps.AppButton"
+        icon: "images/appbutton-icon16.png"
+
+        ItemLibraryEntry {
+            name: "App Button"
+            category: "V-Play App Controls"
+            libraryIcon: "images/appbutton-icon.png"
+            version: "1.0"
+            requiredImport: "VPlayApps"
+        }
+    }
+
+    Type {
+        name: "VPlayApps.AppCheckBox"
+        icon: "images/appcheckbox-icon16.png"
+
+        ItemLibraryEntry {
+            name: "App Check Box"
+            category: "V-Play App Controls"
+            libraryIcon: "images/appcheckbox-icon.png"
+            version: "1.0"
+            requiredImport: "VPlayApps"
+        }
+    }
+
+    Type {
+        name: "VPlayApps.AppImage"
+        icon: "images/appimage-icon16.png"
+
+        ItemLibraryEntry {
+            name: "App Image"
+            category: "V-Play App Controls"
+            libraryIcon: "images/appimage-icon.png"
+            version: "1.0"
+            requiredImport: "VPlayApps"
+
+            Property { name: "height"; type: "int"; value: 200; }
+            Property {
+              name: "fillMode"
+              type: "binding"
+              value: "Image.PreserveAspectFit"
+            }
+        }
+    }
+
+    Type {
+        name: "VPlayApps.AppListView"
+        icon: "images/applistview-icon16.png"
+
+        ItemLibraryEntry {
+            name: "App List View"
+            category: "V-Play App Controls"
+            libraryIcon: "images/applistview-icon.png"
+            version: "1.0"
+            requiredImport: "VPlayApps"
+        }
+    }
+
+    Type {
+        name: "VPlayApps.AppMap"
+        icon: "images/appmap-icon16.png"
+
+        ItemLibraryEntry {
+            name: "App Map"
+            category: "V-Play App Controls"
+            libraryIcon: "images/appmap-icon.png"
+            version: "1.0"
+            requiredImport: "VPlayApps"
+        }
+    }
+
+    Type {
+        name: "VPlayApps.AppRangeSlider"
+        icon: "images/apprangeslider-icon16.png"
+
+        ItemLibraryEntry {
+            name: "App Range Slider"
+            category: "V-Play App Controls"
+            libraryIcon: "images/apprangeslider-icon.png"
+            version: "1.0"
+            requiredImport: "VPlayApps"
+        }
+    }
+
+    Type {
+        name: "VPlayApps.AppSlider"
+        icon: "images/appslider-icon16.png"
+
+        ItemLibraryEntry {
+            name: "App Slider"
+            category: "V-Play App Controls"
+            libraryIcon: "images/appslider-icon.png"
+            version: "1.0"
+            requiredImport: "VPlayApps"
+        }
+    }
+
+    Type {
+        name: "VPlayApps.AppSwitch"
+        icon: "images/appswitch-icon16.png"
+
+        ItemLibraryEntry {
+            name: "App Switch"
+            category: "V-Play App Controls"
+            libraryIcon: "images/appswitch-icon.png"
+            version: "1.0"
+            requiredImport: "VPlayApps"
+        }
+    }
+
+    Type {
+        name: "VPlayApps.AppTabBar"
+        icon: "images/apptabbar-icon16.png"
+
+        ItemLibraryEntry {
+            name: "App Tab Bar"
+            category: "V-Play App Controls"
+            libraryIcon: "images/apptabbar-icon.png"
+            version: "1.0"
+            requiredImport: "VPlayApps"
+        }
+    }
+
+    Type {
+        name: "VPlayApps.AppTabButton"
+        icon: "images/apptabbutton-icon16.png"
+
+        ItemLibraryEntry {
+            name: "App Tab Button"
+            category: "V-Play App Controls"
+            libraryIcon: "images/apptabbutton-icon.png"
+            version: "1.0"
+            requiredImport: "VPlayApps"
+        }
+    }
+
+    Type {
+        name: "VPlayApps.AppText"
+        icon: "images/apptext-icon16.png"
+
+        ItemLibraryEntry {
+            name: "App Text"
+            category: "V-Play App Controls"
+            libraryIcon: "images/apptext-icon.png"
+            version: "1.0"
+            requiredImport: "VPlayApps"
+
+            Property {
+                name: "text"
+                type: "binding"
+                value: "qsTr(\"AppText\")"
+            }
+        }
+    }
+
+    Type {
+        name: "VPlayApps.AppTextEdit"
+        icon: "images/apptextedit-icon16.png"
+
+        ItemLibraryEntry {
+            name: "App Text Edit"
+            category: "V-Play App Controls"
+            libraryIcon: "images/apptextedit-icon.png"
+            version: "1.0"
+            requiredImport: "VPlayApps"
+
+            Property { name: "width"; type: "int"; value: 200; }
+        }
+    }
+
+    Type {
+        name: "VPlayApps.AppTextField"
+        icon: "images/apptextfield-icon16.png"
+
+        ItemLibraryEntry {
+            name: "App Text Field"
+            category: "V-Play App Controls"
+            libraryIcon: "images/apptextfield-icon.png"
+            version: "1.0"
+            requiredImport: "VPlayApps"
+        }
+    }
+
+    Type {
+        name: "VPlayApps.AppTextInput"
+        icon: "images/apptextinput-icon16.png"
+
+        ItemLibraryEntry {
+            name: "App Text Input"
+            category: "V-Play App Controls"
+            libraryIcon: "images/apptextinput-icon.png"
+            version: "1.0"
+            requiredImport: "VPlayApps"
+        }
+    }
+
+    Type {
+        name: "VPlayApps.Dialog"
+        icon: "images/dialog-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Dialog"
+            category: "V-Play App Controls"
+            libraryIcon: "images/dialog-icon.png"
+            version: "1.0"
+            requiredImport: "VPlayApps"
+        }
+    }
+
+    Type {
+        name: "VPlayApps.FloatingActionButton"
+        icon: "images/floatingactionbutton-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Floating Action Button"
+            category: "V-Play App Controls"
+            libraryIcon: "images/floatingactionbutton-icon.png"
+            version: "1.0"
+            requiredImport: "VPlayApps"
+        }
+    }
+
+    Type {
+        name: "VPlayApps.Icon"
+        icon: "images/icon-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Icon"
+            category: "V-Play App Controls"
+            libraryIcon: "images/icon-icon.png"
+            version: "1.0"
+            requiredImport: "VPlayApps"
+        }
+    }
+
+    Type {
+        name: "VPlayApps.IconButton"
+        icon: "images/iconbutton-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Icon Button"
+            category: "V-Play App Controls"
+            libraryIcon: "images/iconbutton-icon.png"
+            version: "1.0"
+            requiredImport: "VPlayApps"
+        }
+    }
+
+    Type {
+        name: "VPlayApps.PageControl"
+        icon: "images/pagecontrol-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Page Control"
+            category: "V-Play App Controls"
+            libraryIcon: "images/pagecontrol-icon.png"
+            version: "1.0"
+            requiredImport: "VPlayApps"
+        }
+    }
+
+    Type {
+        name: "VPlayApps.PullToRefreshHandler"
+        icon: "images/pulltorefreshhandler-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Pull To Refresh Handler"
+            category: "V-Play App Controls"
+            libraryIcon: "images/pulltorefreshhandler-icon.png"
+            version: "1.0"
+            requiredImport: "VPlayApps"
+        }
+    }
+
+    Type {
+        name: "VPlayApps.RoundedImage"
+        icon: "images/roundedimage-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Rounded Image"
+            category: "V-Play App Controls"
+            libraryIcon: "images/roundedimage-icon.png"
+            version: "1.0"
+            requiredImport: "VPlayApps"
+        }
+    }
+
+    Type {
+        name: "VPlayApps.SearchBar"
+        icon: "images/searchbar-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Search Bar"
+            category: "V-Play App Controls"
+            libraryIcon: "images/searchbar-icon.png"
+            version: "1.0"
+            requiredImport: "VPlayApps"
+        }
+    }
+
+    Type {
+        name: "VPlayApps.SectionSelect"
+        icon: "images/sectionselect-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Section Select"
+            category: "V-Play App Controls"
+            libraryIcon: "images/sectionselect-icon.png"
+            version: "1.0"
+            requiredImport: "VPlayApps"
+        }
+    }
+
+    Type {
+        name: "VPlayApps.SimpleRow"
+        icon: "images/simplerow-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Simple Row"
+            category: "V-Play App Controls"
+            libraryIcon: "images/simplerow-icon.png"
+            version: "1.0"
+            requiredImport: "VPlayApps"
+        }
+    }
+
+    Type {
+        name: "VPlayApps.SimpleSection"
+        icon: "images/simplesection-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Simple Section"
+            category: "V-Play App Controls"
+            libraryIcon: "images/simplesection-icon.png"
+            version: "1.0"
+            requiredImport: "VPlayApps"
+        }
+    }
+
+    Type {
+        name: "VPlayApps.SwipeButton"
+        icon: "images/swipebutton-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Swipe Button"
+            category: "V-Play App Controls"
+            libraryIcon: "images/swipebutton-icon.png"
+            version: "1.0"
+            requiredImport: "VPlayApps"
+        }
+    }
+
+    Type {
+        name: "VPlayApps.SwipeOptionsContainer"
+        icon: "images/swipeoptionscontainer-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Swipe Options Container"
+            category: "V-Play App Controls"
+            libraryIcon: "images/swipeoptionscontainer-icon.png"
+            version: "1.0"
+            requiredImport: "VPlayApps"
+        }
+    }
+
+    Type {
+        name: "VPlayApps.VisibilityRefreshHandler"
+        icon: "images/visibilityrefreshhandler-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Visibility Refresh Handler"
+            category: "V-Play App Controls"
+            libraryIcon: "images/visibilityrefreshhandler-icon.png"
+            version: "1.0"
+            requiredImport: "VPlayApps"
+        }
+    }
+}

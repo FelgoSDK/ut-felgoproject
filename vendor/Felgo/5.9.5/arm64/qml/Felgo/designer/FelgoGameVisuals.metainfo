@@ -1,0 +1,209 @@
+MetaInfo {
+    Type {
+        name: "Felgo.AnimatedSprite"
+        icon: "images/animatedspritevplay-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Animated Sprite"
+            category: "Felgo Game Visuals"
+            libraryIcon: "images/animatedspritevplay-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.BackgroundImage"
+        icon: "images/backgroundimage-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Background Image"
+            category: "Felgo Game Visuals"
+            libraryIcon: "images/backgroundimage-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.Camera"
+        icon: "images/cameravplay-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Camera"
+            category: "Felgo Game Visuals"
+            libraryIcon: "images/cameravplay-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.LineItem"
+        icon: "images/lineitem-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Line Item"
+            category: "Felgo Game Visuals"
+            libraryIcon: "images/lineitem-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.MultiResolutionImage"
+        icon: "images/multiresolutionimage-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Multi Resolution Image"
+            category: "Felgo Game Visuals"
+            libraryIcon: "images/multiresolutionimage-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.ParallaxItem"
+        icon: "images/parallaxitem-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Parallax Item"
+            category: "Felgo Game Visuals"
+            libraryIcon: "images/parallaxitem-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.ParallaxScrollingBackground"
+        icon: "images/parallaxscrollingbackground-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Parallax Scrolling Background"
+            category: "Felgo Game Visuals"
+            libraryIcon: "images/parallaxscrollingbackground-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.PolygonItem"
+        icon: "images/polygonitem-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Polygon Item"
+            category: "Felgo Game Visuals"
+            libraryIcon: "images/polygonitem-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.SpineSkeleton"
+        icon: "images/spineskeleton-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Spine Skeleton"
+            category: "Felgo Game Visuals"
+            libraryIcon: "images/spineskeleton-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.SpriteSequence"
+        icon: "images/spritesequencevplay-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Sprite Sequence"
+            category: "Felgo Game Visuals"
+            libraryIcon: "images/spritesequencevplay-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.Sprite"
+        icon: "images/spritevplay-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Sprite"
+            category: "Felgo Game Visuals"
+            libraryIcon: "images/spritevplay-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.TexturePackerAnimatedSprite"
+        icon: "images/texturepackeranimatedspritevplay-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Texture Packer Animated Sprite"
+            category: "Felgo Game Visuals"
+            libraryIcon: "images/texturepackeranimatedspritevplay-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.TexturePackerSpriteSequence"
+        icon: "images/texturepackerspritesequencevplay-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Texture Packer Sprite Sequence"
+            category: "Felgo Game Visuals"
+            libraryIcon: "images/texturepackerspritesequencevplay-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.TexturePackerSprite"
+        icon: "images/texturepackerspritevplay-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Texture Packer Sprite"
+            category: "Felgo Game Visuals"
+            libraryIcon: "images/texturepackerspritevplay-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.SlotMachine"
+        icon: "images/slotmachine-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Slot Machine"
+            category: "Felgo Game Visuals"
+            libraryIcon: "images/slotmachine-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.Particle"
+        icon: "images/particlevplay-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Particle"
+            category: "Felgo Game Visuals"
+            libraryIcon: "images/particlevplay-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+}

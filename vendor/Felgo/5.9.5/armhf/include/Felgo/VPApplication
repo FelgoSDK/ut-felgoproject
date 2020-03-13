@@ -1,0 +1,8 @@
+#ifndef VP_APPLICATION_MODULE_H
+#define VP_APPLICATION_MODULE_H
+#include "felgoapplication.h"
+
+// make FelgoApplication available under VPApplication (fallback)
+#define VPApplication FelgoApplication
+
+#endif

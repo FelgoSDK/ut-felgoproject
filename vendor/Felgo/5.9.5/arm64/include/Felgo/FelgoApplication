@@ -1,0 +1,4 @@
+#ifndef FELGO_APPLICATION_MODULE_H
+#define FELGO_APPLICATION_MODULE_H
+#include "felgoapplication.h"
+#endif

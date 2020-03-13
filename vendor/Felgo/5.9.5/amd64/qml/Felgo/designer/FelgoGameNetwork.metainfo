@@ -1,0 +1,27 @@
+MetaInfo {
+    Type {
+        name: "Felgo.FelgoGameNetwork"
+        icon: "images/vplaygamenetwork-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Felgo Game Network"
+            category: "Felgo Game Network"
+            libraryIcon: "images/vplaygamenetwork-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.GameNetworkView"
+        icon: "images/vplaygamenetworkview-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Game Network View"
+            category: "Felgo Game Network"
+            libraryIcon: "images/vplaygamenetworkview-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+}

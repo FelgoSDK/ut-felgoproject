@@ -1,0 +1,8 @@
+#ifndef VP_LIVE_CLIENT_MODULE_H
+#define VP_LIVE_CLIENT_MODULE_H
+
+#include "felgoliveclient.h"
+
+#define VPlayLiveClient FelgoLiveClient
+
+#endif

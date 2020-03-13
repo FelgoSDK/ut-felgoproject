@@ -1,0 +1,53 @@
+MetaInfo {
+    Type {
+        name: "Felgo.BoxCollider"
+        icon: "images/boxcollider-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Box Collider"
+            category: "Felgo Game Physics"
+            libraryIcon: "images/boxcollider-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.CircleCollider"
+        icon: "images/circlecollider-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Circle Collider"
+            category: "Felgo Game Physics"
+            libraryIcon: "images/circlecollider-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.PhysicsWorld"
+        icon: "images/physicsworld-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Physics World"
+            category: "Felgo Game Physics"
+            libraryIcon: "images/physicsworld-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.PolygonCollider"
+        icon: "images/polygoncollider-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Polygon Collider"
+            category: "Felgo Game Physics"
+            libraryIcon: "images/polygoncollider-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+}

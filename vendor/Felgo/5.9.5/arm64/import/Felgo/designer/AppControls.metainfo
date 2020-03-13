@@ -1,0 +1,393 @@
+MetaInfo {
+    Type {
+        name: "Felgo.AppActivityIndicator"
+        icon: "images/appactivityindicator-icon16.png"
+
+        ItemLibraryEntry {
+            name: "App Activity Indicator"
+            category: "Felgo App Controls"
+            libraryIcon: "images/appactivityindicator-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.AppButton"
+        icon: "images/appbutton-icon16.png"
+
+        ItemLibraryEntry {
+            name: "App Button"
+            category: "Felgo App Controls"
+            libraryIcon: "images/appbutton-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.AppCheckBox"
+        icon: "images/appcheckbox-icon16.png"
+
+        ItemLibraryEntry {
+            name: "App Check Box"
+            category: "Felgo App Controls"
+            libraryIcon: "images/appcheckbox-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.AppImage"
+        icon: "images/appimage-icon16.png"
+
+        ItemLibraryEntry {
+            name: "App Image"
+            category: "Felgo App Controls"
+            libraryIcon: "images/appimage-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+
+            Property { name: "height"; type: "int"; value: 200; }
+            Property {
+              name: "fillMode"
+              type: "binding"
+              value: "Image.PreserveAspectFit"
+            }
+        }
+    }
+
+    Type {
+        name: "Felgo.AppListView"
+        icon: "images/applistview-icon16.png"
+
+        ItemLibraryEntry {
+            name: "App List View"
+            category: "Felgo App Controls"
+            libraryIcon: "images/applistview-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.AppMap"
+        icon: "images/appmap-icon16.png"
+
+        ItemLibraryEntry {
+            name: "App Map"
+            category: "Felgo App Controls"
+            libraryIcon: "images/appmap-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.AppRangeSlider"
+        icon: "images/apprangeslider-icon16.png"
+
+        ItemLibraryEntry {
+            name: "App Range Slider"
+            category: "Felgo App Controls"
+            libraryIcon: "images/apprangeslider-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.AppSlider"
+        icon: "images/appslider-icon16.png"
+
+        ItemLibraryEntry {
+            name: "App Slider"
+            category: "Felgo App Controls"
+            libraryIcon: "images/appslider-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.AppSwitch"
+        icon: "images/appswitch-icon16.png"
+
+        ItemLibraryEntry {
+            name: "App Switch"
+            category: "Felgo App Controls"
+            libraryIcon: "images/appswitch-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.AppTabBar"
+        icon: "images/apptabbar-icon16.png"
+
+        ItemLibraryEntry {
+            name: "App Tab Bar"
+            category: "Felgo App Controls"
+            libraryIcon: "images/apptabbar-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.AppTabButton"
+        icon: "images/apptabbutton-icon16.png"
+
+        ItemLibraryEntry {
+            name: "App Tab Button"
+            category: "Felgo App Controls"
+            libraryIcon: "images/apptabbutton-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.AppText"
+        icon: "images/apptext-icon16.png"
+
+        ItemLibraryEntry {
+            name: "App Text"
+            category: "Felgo App Controls"
+            libraryIcon: "images/apptext-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+
+            Property {
+                name: "text"
+                type: "binding"
+                value: "qsTr(\"AppText\")"
+            }
+        }
+    }
+
+    Type {
+        name: "Felgo.AppTextEdit"
+        icon: "images/apptextedit-icon16.png"
+
+        ItemLibraryEntry {
+            name: "App Text Edit"
+            category: "Felgo App Controls"
+            libraryIcon: "images/apptextedit-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+
+            Property { name: "width"; type: "int"; value: 200; }
+        }
+    }
+
+    Type {
+        name: "Felgo.AppTextField"
+        icon: "images/apptextfield-icon16.png"
+
+        ItemLibraryEntry {
+            name: "App Text Field"
+            category: "Felgo App Controls"
+            libraryIcon: "images/apptextfield-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.AppTextInput"
+        icon: "images/apptextinput-icon16.png"
+
+        ItemLibraryEntry {
+            name: "App Text Input"
+            category: "Felgo App Controls"
+            libraryIcon: "images/apptextinput-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.Dialog"
+        icon: "images/dialog-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Dialog"
+            category: "Felgo App Controls"
+            libraryIcon: "images/dialog-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.FloatingActionButton"
+        icon: "images/floatingactionbutton-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Floating  Action Button"
+            category: "Felgo App Controls"
+            libraryIcon: "images/floatingactionbutton-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.Icon"
+        icon: "images/icon-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Icon"
+            category: "Felgo App Controls"
+            libraryIcon: "images/icon-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.IconButton"
+        icon: "images/iconbutton-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Icon Button"
+            category: "Felgo App Controls"
+            libraryIcon: "images/iconbutton-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.PageControl"
+        icon: "images/pagecontrol-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Page Control"
+            category: "Felgo App Controls"
+            libraryIcon: "images/pagecontrol-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.PullToRefreshHandler"
+        icon: "images/pulltorefreshhandler-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Pull To Refresh Handler"
+            category: "Felgo App Controls"
+            libraryIcon: "images/pulltorefreshhandler-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.RoundedImage"
+        icon: "images/roundedimage-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Rounded Image"
+            category: "Felgo App Controls"
+            libraryIcon: "images/roundedimage-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.SearchBar"
+        icon: "images/searchbar-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Search Bar"
+            category: "Felgo App Controls"
+            libraryIcon: "images/searchbar-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.SectionSelect"
+        icon: "images/sectionselect-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Section Select"
+            category: "Felgo App Controls"
+            libraryIcon: "images/sectionselect-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.SimpleRow"
+        icon: "images/simplerow-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Simple Row"
+            category: "Felgo App Controls"
+            libraryIcon: "images/simplerow-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.SimpleSection"
+        icon: "images/simplesection-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Simple Section"
+            category: "Felgo App Controls"
+            libraryIcon: "images/simplesection-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.SwipeButton"
+        icon: "images/swipebutton-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Swipe Button"
+            category: "Felgo App Controls"
+            libraryIcon: "images/swipebutton-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.SwipeOptionsContainer"
+        icon: "images/swipeoptionscontainer-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Swipe Options Container"
+            category: "Felgo App Controls"
+            libraryIcon: "images/swipeoptionscontainer-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.VisibilityRefreshHandler"
+        icon: "images/visibilityrefreshhandler-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Visibility Refresh Handler"
+            category: "Felgo App Controls"
+            libraryIcon: "images/visibilityrefreshhandler-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+}

@@ -1,0 +1,40 @@
+MetaInfo {
+    Type {
+        name: "Felgo.PathMovement"
+        icon: "images/pathmovement-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Path Movement"
+            category: "Felgo Game AI"
+            libraryIcon: "images/pathmovement-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.MoveToPointHelper"
+        icon: "images/movetopointhelper-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Move To Point Helper"
+            category: "Felgo Game AI"
+            libraryIcon: "images/movetopointhelper-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.MovementAnimation"
+        icon: "images/movementanimation-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Movement Animation"
+            category: "Felgo Game AI"
+            libraryIcon: "images/movementanimation-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+}

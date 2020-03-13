@@ -1,0 +1,4 @@
+#ifndef FELGO_LIVE_CLIENT_MODULE_H
+#define FELGO_LIVE_CLIENT_MODULE_H
+#include "felgoliveclient.h"
+#endif

@@ -1,0 +1,41 @@
+MetaInfo {
+
+    Type {
+        name: "Felgo.NotificationBar"
+        icon: "images/notificationbar-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Notification Bar"
+            category: "Felgo Multiplayer"
+            libraryIcon: "images/notificationbar-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.FelgoMultiplayer"
+        icon: "images/vplaymultiplayer-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Felgo Multiplayer"
+            category: "Felgo Multiplayer"
+            libraryIcon: "images/vplaymultiplayer-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+
+    Type {
+        name: "Felgo.MultiplayerView"
+        icon: "images/vplaymultiplayerview-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Multiplayer View"
+            category: "Felgo Multiplayer"
+            libraryIcon: "images/vplaymultiplayerview-icon.png"
+            version: "3.0"
+            requiredImport: "Felgo"
+        }
+    }
+}

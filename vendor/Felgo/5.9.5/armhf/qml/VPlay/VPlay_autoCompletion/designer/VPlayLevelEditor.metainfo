@@ -1,0 +1,117 @@
+MetaInfo {
+    Type {
+        name: "VPlay.BuildEntityButton"
+        icon: "images/buildentitybutton-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Build Entity Button"
+            category: "V-Play Level Editor"
+            libraryIcon: "images/buildentitybutton-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+
+    Type {
+        name: "VPlay.EditableComponent"
+        icon: "images/editablecomponent-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Editable Component"
+            category: "V-Play Level Editor"
+            libraryIcon: "images/editablecomponent-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+
+    Type {
+        name: "VPlay.EntityBaseDraggable"
+        icon: "images/entitybasedraggable-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Entity Base Draggable"
+            category: "V-Play Level Editor"
+            libraryIcon: "images/entitybasedraggable-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+
+    Type {
+        name: "VPlay.ItemEditor"
+        icon: "images/itemeditor-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Item Editor"
+            category: "V-Play Level Editor"
+            libraryIcon: "images/itemeditor-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+
+    Type {
+        name: "VPlay.LevelBase"
+        icon: "images/levelbase-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Level Base"
+            category: "V-Play Level Editor"
+            libraryIcon: "images/levelbase-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+
+    Type {
+        name: "VPlay.LevelEditor"
+        icon: "images/leveleditor-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Level Editor"
+            category: "V-Play Level Editor"
+            libraryIcon: "images/leveleditor-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+
+    Type {
+        name: "VPlay.LevelLoader"
+        icon: "images/levelloader-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Level Loader"
+            category: "V-Play Level Editor"
+            libraryIcon: "images/levelloader-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+
+    Type {
+        name: "VPlay.LevelSelectionList"
+        icon: "images/levelselectionlist-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Level Selection List"
+            category: "V-Play Level Editor"
+            libraryIcon: "images/levelselectionlist-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+    Type {
+        name: "VPlay.LevelStore"
+        icon: "images/levelstore-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Level Store"
+            category: "V-Play Level Editor"
+            libraryIcon: "images/levelstore-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+}

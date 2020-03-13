@@ -1,0 +1,7 @@
+{
+  "template": "qmake",
+  "kill": "./app.run",
+  "build_args": " ",
+  "make_jobs": 5,
+  "build_dir": "build"
+}

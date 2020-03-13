@@ -1,0 +1,40 @@
+MetaInfo {
+    Type {
+        name: "VPlay.AlphaVideo"
+        icon: "images/alphavideo-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Alpha Video"
+            category: "V-Play Multimedia"
+            libraryIcon: "images/alphavideo-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+
+    Type {
+        name: "VPlay.BackgroundMusic"
+        icon: "images/backgroundmusic-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Background Music"
+            category: "V-Play Multimedia"
+            libraryIcon: "images/backgroundmusic-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+
+    Type {
+        name: "VPlay.SoundEffectVPlay"
+        icon: "images/soundeffectvplay-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Sound Effect VPlay"
+            category: "V-Play Multimedia"
+            libraryIcon: "images/soundeffectvplay-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+}

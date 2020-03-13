@@ -1,0 +1,27 @@
+MetaInfo {
+    Type {
+        name: "VPlay.VPlayGameNetwork"
+        icon: "images/vplaygamenetwork-icon16.png"
+
+        ItemLibraryEntry {
+            name: "VPlay Game Network"
+            category: "V-Play Game Network"
+            libraryIcon: "images/vplaygamenetwork-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+
+    Type {
+        name: "VPlay.VPlayGameNetworkView"
+        icon: "images/vplaygamenetworkview-icon16.png"
+
+        ItemLibraryEntry {
+            name: "VPlay Game Network View"
+            category: "V-Play Game Network"
+            libraryIcon: "images/vplaygamenetworkview-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+}

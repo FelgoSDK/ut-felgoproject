@@ -1,0 +1,27 @@
+MetaInfo {
+    Type {
+        name: "VPlay.Storage"
+        icon: "images/storage-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Storage"
+            category: "V-Play Utility"
+            libraryIcon: "images/storage-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+
+    Type {
+        name: "VPlay.WebStorage"
+        icon: "images/webstorage-icon16.png"
+
+        ItemLibraryEntry {
+            name: "Web Storage"
+            category: "V-Play Utility"
+            libraryIcon: "images/webstorage-icon.png"
+            version: "2.0"
+            requiredImport: "VPlay"
+        }
+    }
+}
