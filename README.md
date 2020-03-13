@@ -15,3 +15,8 @@ export CLICKABLE_SSH=10.0.0.15   # Required for devices without adb, i.e. PinePh
 export CLICK_ARCH=arm64 && export CLICKABLE_ARCH=$CLICK_ARCH  # Set architecture (amd64|arm64|armhf)
 clickable
 ```
+
+You can also easy try the Ubuntu Touch app on desktop:
+```
+export CLICK_ARCH=amd64 && export CLICKABLE_ARCH=$CLICK_ARCH && clickable desktop
+```
